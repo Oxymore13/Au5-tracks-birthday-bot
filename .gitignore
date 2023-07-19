@@ -1,3 +1,5 @@
-config/botConfig.json
-config/credentials.json
+botToken
+calendarid
 token.pickle
+credentials.json
+*.pyc
