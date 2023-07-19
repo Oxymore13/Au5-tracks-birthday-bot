@@ -13,10 +13,10 @@ class Config():
         with open('config/botConfig.json','r') as f:
             config_file = json.load(f)
 
-            self.channel = config_file['channel']
-            self.embed_color = 0xFFFFFF
-            self.token = config_file['botToken']
-            self.calendarId = config_file['calendarId']
+        self.channel = config_file['channel']
+        self.embed_color = 0xFFFFFF
+        self.token = config_file['botToken']
+        self.calendarId = config_file['calendarId']
 
 try :
     config = Config()

@@ -1,5 +1,5 @@
 botToken
 calendarid
 token.pickle
-credentials.json
 *.pyc
+*.json
