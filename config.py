@@ -12,12 +12,15 @@ class Config():
     test_channel = int()
 
     def __init__(self) :
-        self.token = 'MTEyMTkwODAyNzcwNTAyMDUzNg.G6pyu1.AB4CJEE3Fq-BHGhkDqzk2OPrvQ3v9OqOKdb8RY'
         self.channel = 581198974917279755
         self.embed_color = 0xFFFFFF
-        self.calendarId = 'konsta.pylkko@gmail.com'
+                
+        with open('botToken','r') as f :
+            self.token = f.read()
 
-        self.test_channel = 1121910774831513811
+        with open('calendarid','r') as f :
+            self.calendarId = f.read()
+
 
 try :
     config = Config()
