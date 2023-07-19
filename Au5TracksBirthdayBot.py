@@ -15,30 +15,28 @@ try :
     from discord.ext import commands, tasks
     import os
 
-    from config import config
+    from config.config import config
     from birthday import CalendarChecker, get_date_string_from_event
 except Exception as e :
     print("Exception during imports :\n\n",e)
-    input()
     exit()
 
 
 ## When the token is wrong removing it can solve the issue
-try :
-    checker = CalendarChecker(config.calendarId)
-except Exception as e :
-    if os.path.exists("token.pickle") :
-        os.remove("token.pickle")
-        try :
-            checker = CalendarChecker(config.calendarId)
-        except Exception as e :
-            print("Exception on calendar_checker :\n\n",e)
-            input()
-            exit()
-    else :
-        print("Exception on calendar_checker :\n\n",e)
-        input()
-        exit()
+checker = CalendarChecker(config)
+# try :
+#     checker = CalendarChecker(config)
+# except Exception as e :
+#     if os.path.exists("token.pickle") :
+#         os.remove("token.pickle")
+#         try :
+#             checker = CalendarChecker(config)
+    #     except Exception as e :
+    #         print("Exception on calendar_checker :\n\n",e)
+    #         exit()
+    # else :
+    #     print("Exception on calendar_checker :\n\n",e)
+    #     exit()
 
 
 

@@ -1,4 +1,3 @@
-botToken
-calendarid
+config/botConfig.json
+config/credentials.json
 token.pickle
-credentials.json

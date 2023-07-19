@@ -1,3 +1,4 @@
-discord
-pickle5
-google-api-python-client
+discord.py==2.3.1
+google_api_python_client==2.90.0
+google_auth_oauthlib==1.0.0
+protobuf==4.23.4

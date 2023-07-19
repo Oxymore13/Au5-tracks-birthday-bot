@@ -1,6 +1,4 @@
-
-
-
+import json
 
 class Config():
     # I defined them here so the IDE proposes them to me for auto completion
@@ -12,19 +10,16 @@ class Config():
     test_channel = int()
 
     def __init__(self) :
-        self.channel = 581198974917279755
-        self.embed_color = 0xFFFFFF
-                
-        with open('botToken','r') as f :
-            self.token = f.read()
+        with open('config/botConfig.json','r') as f:
+            config_file = json.load(f)
 
-        with open('calendarid','r') as f :
-            self.calendarId = f.read()
-
+            self.channel = config_file['channel']
+            self.embed_color = 0xFFFFFF
+            self.token = config_file['botToken']
+            self.calendarId = config_file['calendarId']
 
 try :
     config = Config()
 except Exception as e :
     print("Exception on config : \n\n",e)
-    input()
     exit()
