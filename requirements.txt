@@ -1,0 +1,3 @@
+discord
+pickle5
+google-api-python-client
