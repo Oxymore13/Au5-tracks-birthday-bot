@@ -7,20 +7,14 @@
 # Google calendar made by Norhkuna
 #----------------------------------------------------------------------------------------------------
 
-## I sometimes get errors on the imports so this makes sure the window doesn't close before I can see what happened
-try :
-    from datetime import datetime
-    import discord
-    from discord import app_commands
-    from discord.ext import commands, tasks
-    import os
+from datetime import datetime
+import discord
+from discord import app_commands
+from discord.ext import commands, tasks
+import os
 
-    from config import config
-    from birthday import CalendarChecker, get_date_string_from_event
-except Exception as e :
-    print("Exception during imports :\n\n",e)
-    input()
-    exit()
+from config import config
+from birthday import CalendarChecker, get_date_string_from_event
 
 
 ## When the token is wrong removing it can solve the issue
@@ -29,18 +23,7 @@ try :
 except Exception as e :
     if os.path.exists("token.pickle") :
         os.remove("token.pickle")
-        try :
-            checker = CalendarChecker(config.calendarId)
-        except Exception as e :
-            print("Exception on calendar_checker :\n\n",e)
-            input()
-            exit()
-    else :
-        print("Exception on calendar_checker :\n\n",e)
-        input()
-        exit()
-
-
+        checker = CalendarChecker(config.calendarId)
 
 
 
@@ -84,8 +67,9 @@ def levenshtein_distance(str1, str2):
 # BOT
 #----------------------------------------------------------------------------------------------------
 
-
-bot = commands.Bot(command_prefix="/", intents=discord.Intents.all())
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix="/", intents=intents)
 
 ## Checking daily if there's a birthday
 @tasks.loop(hours=24)
