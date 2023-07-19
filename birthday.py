@@ -10,9 +10,9 @@ CREDENTIALS_FILE = 'credentials.json'
 TOKEN_FILE = 'token.pickle'
 
 class CalendarChecker:
-    def __init__(self, calendarId) -> None:
+    def __init__(self, config) -> None:
+        self.calendarId = config.calendarId
         self.service = self.authenticate()
-        self.calendarId = calendarId
 
     def authenticate(self):
         creds = None
@@ -27,8 +27,7 @@ class CalendarChecker:
                 creds.refresh(Request())
 
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    CREDENTIALS_FILE, SCOPES)
+                flow = InstalledAppFlow.from_client_secrets_file('config/credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
 
             with open(TOKEN_FILE, 'wb') as token:
@@ -78,10 +77,10 @@ def get_date_string_from_event(event):
     return datetime.fromisoformat(event['start'].get('dateTime', event['start'].get('date'))).strftime('%A, %d. %B %Y')
 
 if __name__ == '__main__':
-    from config import Config
+    from config.config import Config
     config = Config()
 
-    CalendarChecker = CalendarChecker(config.calendarId)
+    CalendarChecker = CalendarChecker(config)
     now = datetime.utcnow()
     all = CalendarChecker.get_all_events()
     limit = 5
