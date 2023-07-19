@@ -4,8 +4,8 @@ This discord bot displays Au5's tracks birthdays.
 
 ## commands
 
-`/birthday <track>` : find the release date of a track by name (so far, the exact name must be typed)
-`/ping` : displays the bot's ping
+- `/birthday <track>` : find the release date of a track by name (so far, the exact name must be typed)
+- `/ping` : displays the bot's ping
 
 ## Credits
 
